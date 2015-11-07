@@ -8,7 +8,7 @@
     "express": "3.x.x"
   },
   "scripts": {
-    "start": "node app.js",
+    "start": "node app/server/app.js",
     "postinstall": "node scripts/postinstall.js"
   }
 
