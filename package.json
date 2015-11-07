@@ -5,11 +5,12 @@
   "author": "Node Knockout Team <all@nodeknockout.com>",
   "main": "./app.js",
   "dependencies": {
-    "express": "3.x.x"
+    "express": "3.x.x",
+    "oauth": "^0.9.14",
+    "request": "^2.65.0"
   },
   "scripts": {
     "start": "node app/server/app.js",
     "postinstall": "node scripts/postinstall.js"
   }
-
 }
