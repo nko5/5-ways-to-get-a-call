@@ -40,7 +40,7 @@ router.get('/twitter/trends', function (req, res){
     if(err){
       return res.json(err);
     }
-    console.log(body)
+    console.log(body);
     res.json(body);
   });
 });
