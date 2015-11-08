@@ -10,14 +10,15 @@ router.get('/', function (req, res){
 //youtube routes for google youtube api
 
 router.get('/youtube/search', function (req, res){
+  console.log('req',req.query, req.params);
   request.get({
     url: 'https://www.googleapis.com/youtube/v3/search',
     qs: {
       key: googleApiKey,
-      order: 'relevance',
-      q: 'crossing field lyrics',
-      part: 'snippet',
-      type: 'video'
+      order: req.query.order,
+      q: req.query.q,
+      part: req.query.part,
+      type: req.query.type
     }
   }, function(err, response, body){
     if(err){
@@ -34,7 +35,7 @@ router.get('/twitter/trends', function (req, res){
     url: 'http://api.whatthetrend.com/api/v2/trends.json',
     qs: {
       api_key : 'd769696ab7882728ecbd4fe1b5bd7ca68918c28d',
-      woeid : '2347570'
+      woeid : req.query.woeid
     }
   }, function(err, response, body){
     if(err){
