@@ -4,8 +4,8 @@ app.controller('mainController', ['$scope', 'trendsService', function ($scope, t
   $('button').on('click', function (){
     trendsService.getTwitter()
       .success(function (data) {
-        $scope.twitterTrends = $.parseJSON(data);
-        console.log($scope.twitterTrends);
+        var trends = $.parseJSON(data);
+        $scope.twitterTrends = trends.trends;
       }
     );
   });

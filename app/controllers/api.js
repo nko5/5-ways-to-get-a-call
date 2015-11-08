@@ -34,7 +34,7 @@ router.get('/twitter/trends', function (req, res){
     url: 'http://api.whatthetrend.com/api/v2/trends.json',
     qs: {
       api_key : 'd769696ab7882728ecbd4fe1b5bd7ca68918c28d',
-      woeid : '1'
+      woeid : '2347570'
     }
   }, function(err, response, body){
     if(err){
