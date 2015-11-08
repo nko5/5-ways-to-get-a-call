@@ -9,5 +9,5 @@ app.config(['$routeProvider', function($routeProvider) {
     .when('/video', {
       controller : 'videoController',
       templateUrl : 'views/video.html'
-    })
+    });
 }]);

@@ -1,18 +1,40 @@
 var app = angular.module('app');
 
-app.controller('videoController', ['$scope', function($scope){
-
+app.controller('videoController', ['$scope', '$http', '$routeParams', 'trendsService', function($scope, $http, $routeParams, trendsService){
+  var url = 'http://www.youtube.com/embed/';
+  trendsService.getTwitter('1')
+    .success(function (data) {
+      var trends = $.parseJSON(data);
+      $scope.twitterTrends = trends.trends;
+    }
+  );
+  $scope.title = $routeParams.trend;
   function getVideoData(trend) {
-    $.get('/api/youtube/search')
-      .done(function(data) {
-        $scope.data = $.parseJSON(data.items[0]);
-        setVideo();
-      });
+    $http.get('/api/youtube/search', {
+      params: {
+        'order': 'relevance',
+        'q': trend,
+        'part': 'snippet',
+        'type': 'video'
+      }
+    }).then(successCallback, errorCallback);
   }
 
-  function setVideo() {
-    //maybe directive? or just pure jquery create iframe
-    
+  function successCallback(response){
+    var res = $.parseJSON(response.data);
+    if(res.items.length === 0){
+      return $('iframe.video').attr('src', 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRWkCn-8IoWbeMJsIpyImprQXvin05IEv_YF18o0FarCUbQnf31cBfEt9g');
+    }else{
+      setVideo(res); 
+    }
   }
-  getVideoData();
+   function errorCallback (response){
+    var res = $.parseJSON(response.data);
+    console.log('response err', res);
+  }
+
+  function setVideo(video) {
+    $('iframe.video').attr('src', url + video.items[0].id.videoId + '?autoplay=true');
+  }
+  getVideoData($scope.title);
 }]);
