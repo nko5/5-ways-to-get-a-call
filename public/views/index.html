@@ -1,7 +1,6 @@
 <div class='main' ng-controller="mainController as trendsList">
   <h1>Hello Main Controller</h1>
-  <button>TOUCH ME</button>
-  <li ng-repeat="(key, value) in twitterTrends">
-    {{value.name}}
-  </li>
+  <ul>
+    <li ng-repeat="(key, value) in twitterTrends" trend="{{value}}" trend-link></li>
+  </ul>
 </div>
