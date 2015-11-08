@@ -2,7 +2,6 @@ var app = angular.module('app');
 
 app.controller('videoController', ['$scope', '$http', '$routeParams', 'trendsService', function($scope, $http, $routeParams, trendsService){
   var url = 'http://www.youtube.com/embed/';
-  $scope.twitterTrends
   trendsService.getTwitter()
     .success(function (data) {
       var trends = $.parseJSON(data);
