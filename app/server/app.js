@@ -3,7 +3,7 @@ var app             = express();
 var api             = require('../controllers/api.js');
 var bodyParser      = require('body-parser');
 var ejs             = require('ejs');
-var path = require('path');
+var path            = require('path');
 //===================================================
 //Dependancies=======================================
 app.use(express.static('public/'));
