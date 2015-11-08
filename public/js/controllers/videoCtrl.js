@@ -1,7 +1,14 @@
 var app = angular.module('app');
 
-app.controller('videoController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams){
+app.controller('videoController', ['$scope', '$http', '$routeParams', 'trendsService', function($scope, $http, $routeParams, trendsService){
   var url = 'http://www.youtube.com/embed/';
+  $scope.twitterTrends
+  trendsService.getTwitter()
+    .success(function (data) {
+      var trends = $.parseJSON(data);
+      $scope.twitterTrends = trends.trends;
+    }
+  );
   $scope.title = $routeParams.trend;
   function getVideoData(trend) {
     $http.get('/api/youtube/search', {
@@ -16,7 +23,11 @@ app.controller('videoController', ['$scope', '$http', '$routeParams', function($
 
   function successCallback(response){
     var res = $.parseJSON(response.data);
-    setVideo(res);
+    if(res.items.length === 0){
+      return $('iframe').attr('src', 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRWkCn-8IoWbeMJsIpyImprQXvin05IEv_YF18o0FarCUbQnf31cBfEt9g');
+    }else{
+      setVideo(res); 
+    }
   }
    function errorCallback (response){
     var res = $.parseJSON(response.data);

@@ -1,7 +1,8 @@
 var express   = require('express');
 var router    = express.Router();
 var request   = require('request');
-var googleApiKey = process.env.gglKey;
+var googleApiKey = process.env.GGLKEY;
+var trendKey = process.env.TRKEY;
 
 router.get('/', function (req, res){
   res.render('index', { title: "hello world"});
@@ -34,7 +35,7 @@ router.get('/twitter/trends', function (req, res){
   request.get({
     url: 'http://api.whatthetrend.com/api/v2/trends.json',
     qs: {
-      api_key : 'd769696ab7882728ecbd4fe1b5bd7ca68918c28d',
+      api_key : trendKey,
       woeid : req.query.woeid
     }
   }, function(err, response, body){
