@@ -1,8 +1,8 @@
 var app = angular.module('app');
 
-app.controller('mainController', ['$scope', 'trendsService', function ($scope, trendsService) {
+app.controller('mainController', ['$scope', 'trendsService', '$http', '$q', function ($scope, trendsService, $http, $q) {
   $scope.twitterTrends = "";
-  trendsService.getTwitter()
+  trendsService.getTwitter('2514815')
     .success(function (data) {
       var trends = $.parseJSON(data);
       $scope.twitterTrends = trends.trends;

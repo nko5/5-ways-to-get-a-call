@@ -11,7 +11,6 @@ router.get('/', function (req, res){
 //youtube routes for google youtube api
 
 router.get('/youtube/search', function (req, res){
-  console.log('req',req.query, req.params);
   request.get({
     url: 'https://www.googleapis.com/youtube/v3/search',
     qs: {
@@ -25,7 +24,7 @@ router.get('/youtube/search', function (req, res){
     if(err){
       return res.json(err);
     }
-    console.log('body',body);
+    //console.log('body',body);
     res.json(body);
   });
 });
@@ -46,7 +45,6 @@ router.get('/twitter/trends', function (req, res){
     res.json(body);
   });
 });
-
 
 
 
