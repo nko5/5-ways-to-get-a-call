@@ -1,7 +1,9 @@
 <div class="video">
   <h1>{{title}}</h1>
-  <iframe class="video" src=""></iframe>
-  <ul>
-    <li ng-repeat="(key, value) in twitterTrends" trend="{{value}}" trend-link></li>
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe class="video embed-responsive-item" src=""></iframe>
+  </div>
+  <ul class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-block">
+    <li class="col-lg-4 col-md-6 col-sm-12 col-xs-12 trends" ng-repeat="(key, value) in twitterTrends" trend="{{value}}" trend-link></li>
   </ul>
 </div>

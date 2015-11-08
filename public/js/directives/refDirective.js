@@ -6,7 +6,10 @@ app.directive('trendLink', function(){
     link: function($scope, element, attrs) {
       var attr = $.parseJSON(attrs.trend);
       var link = encodeURIComponent(attr.name);
-      $(element).append('<a href="/api#/video?trend='+ link +'">'+ attr.name +'</a>');
+      var nam = attr.name;
+      var regexp = new RegExp('#','g');
+      var name = nam.replace(regexp, " ");
+      $(element).append('<a class="btn btn-primary btn-lg" href="/api#/video?trend='+ link +'">'+ name +'</a>');
     }
   };
 });

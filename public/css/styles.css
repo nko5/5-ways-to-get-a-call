@@ -5820,3 +5820,36 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+
+body {
+  height: 100%;
+  width: 100%;
+  background: url("http://s.numrush.nl/wp-content/uploads/2014/03/Twitter-Whale-1024x768.jpg") no-repeat center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover !important; }
+
+.trends {
+  float: left;
+  list-style: none;
+  padding-top: 4px;
+  padding-bottom: 4px; }
+  .trends a {
+    width: 100%; }
+
+.video {
+  margin-left: 15px;
+  margin-right: 25px;
+  padding-bottom: 30px; }
+
+img {
+  padding-left: 20px; }
+
+p {
+  padding-left: 30px;
+  padding-right: 25px; }
+
+.nko {
+  padding-left: 25px;
+  padding-left: 25px; }
