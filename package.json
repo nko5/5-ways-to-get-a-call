@@ -5,7 +5,8 @@
   "author": "Node Knockout Team <all@nodeknockout.com>",
   "main": "./app.js",
   "dependencies": {
-    "express": "3.x.x",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
     "oauth": "^0.9.14",
     "request": "^2.65.0"
   },
