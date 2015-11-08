@@ -1,18 +1,30 @@
 var app = angular.module('app');
 
-app.controller('videoController', ['$scope', function($scope){
-
+app.controller('videoController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams){
+  var url = 'http://www.youtube.com/embed/';
+  $scope.title = $routeParams.trend;
   function getVideoData(trend) {
-    $.get('/api/youtube/search')
-      .done(function(data) {
-        $scope.data = $.parseJSON(data.items[0]);
-        setVideo();
-      });
+    $http.get('/api/youtube/search', {
+      params: {
+        'order': 'relevance',
+        'q': trend,
+        'part': 'snippet',
+        'type': 'video'
+      }
+    }).then(successCallback, errorCallback);
   }
 
-  function setVideo() {
-    //maybe directive? or just pure jquery create iframe
-    
+  function successCallback(response){
+    var res = $.parseJSON(response.data);
+    setVideo(res);
   }
-  getVideoData();
+   function errorCallback (response){
+    var res = $.parseJSON(response.data);
+    console.log('response err', res);
+  }
+
+  function setVideo(video) {
+    $('iframe').attr('src', url + video.items[0].id.videoId + '?autoplay=true');
+  }
+  getVideoData($scope.title);
 }]);
