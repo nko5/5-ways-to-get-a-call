@@ -1,6 +1,7 @@
 <div class='main' ng-controller="mainController as trendsList">
-  <h1>Hello Main Controller</h1>
-  <ul>
-    <li ng-repeat="(key, value) in twitterTrends" trend="{{value}}" trend-link></li>
+  <pull-down></pull-down>
+  <img src="/assets/logos.png">
+  <ul class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <li class="col-lg-4 col-md-6 col-sm-12 col-xs-12" ng-repeat="(key, value) in twitterTrends" trend="{{value}}" trend-link></li>
   </ul>
 </div>

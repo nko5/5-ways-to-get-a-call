@@ -10,3 +10,12 @@ app.directive('trendLink', function(){
     }
   };
 });
+app.directive('pullDown', function (){
+  return {
+    replace: true,
+    restrict: 'E',
+    templateUrl: '../../views/splash.html',
+    link: function($scope, element, attrs) {
+    }
+  };
+})

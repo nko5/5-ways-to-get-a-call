@@ -34,7 +34,7 @@ app.controller('videoController', ['$scope', '$http', '$routeParams', 'trendsSer
   }
 
   function setVideo(video) {
-    $('iframe').attr('src', url + video.items[0].id.videoId + '?autoplay=true');
+    $('iframe.video').attr('src', url + video.items[0].id.videoId + '?autoplay=true');
   }
   getVideoData($scope.title);
 }]);
