@@ -5,6 +5,7 @@
   "author": "Node Knockout Team <all@nodeknockout.com>",
   "main": "./app.js",
   "dependencies": {
+    "body-parser": "^1.14.1",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
     "oauth": "^0.9.14",
@@ -12,6 +13,7 @@
   },
   "scripts": {
     "start": "node app/server/app.js",
+    "bower": "bower install",
     "postinstall": "node scripts/postinstall.js"
   }
 }

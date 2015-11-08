@@ -1,7 +1,12 @@
 var app = angular.module('app');
 
-app.controller('mainController', [function () {
+app.controller('mainController', ['$scope', 'trendsService', function ($scope, trendsService) {
   $('button').on('click', function (){
-    console.log('ooh you touch my button');
+    trendsService.getTwitter()
+      .success(function (data) {
+        var trends = $.parseJSON(data);
+        $scope.twitterTrends = trends.trends;
+      }
+    );
   });
 }]);
