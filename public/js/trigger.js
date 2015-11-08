@@ -1,11 +1,10 @@
 angular.module('app')
   .service('trendsService', ['$http', function ($http) {
-    this.getTwitter = function(){
+    this.getTwitter = function(woeid){
       return $http.get('/api/twitter/trends', {
-        params:
-          {
-            woeid: 1
-          }
+        params:{
+          woeid: woeid
+        }
       });
     };
 }]);
